@@ -1,8 +1,8 @@
-package org.keyin.Trait;
+package org.keyin.Education;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TraitRepository extends JpaRepository<Trait, Long> {
+public interface EducationRepository extends JpaRepository<Education, Long> {
 }

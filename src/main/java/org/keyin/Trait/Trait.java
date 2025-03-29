@@ -13,18 +13,18 @@ public class Trait {
 
     private String traitName;
     private String traitDescription;
-    private String traitType; //Good/Bad/Neutral??
-    private String eventEffect;
+    private String traitType;
+    private String traitEffect;
 
     //Default Constructor
     public Trait() {
     }
 
-    public Trait(String traitName, String traitDescription, String traitType, String eventEffect) {
+    public Trait(String traitName, String traitDescription, String traitType, String traitEffect) {
         this.traitName = traitName;
         this.traitDescription = traitDescription;
         this.traitType = traitType;
-        this.eventEffect = eventEffect;
+        this.traitEffect = traitEffect;
     }
 
     //Setters and Getters
@@ -57,11 +57,11 @@ public class Trait {
         this.traitType = traitType;
     }
 
-    public String getEventEffect() {
-        return eventEffect;
+    public String getTraitEffect() {
+        return traitEffect;
     }
 
-    public void setEventEffect(String eventEffect) {
-        this.eventEffect = eventEffect;
+    public void setTraitEffect(String traitEffect) {
+        this.traitEffect = traitEffect;
     }
 }

@@ -17,11 +17,21 @@ public class Person {
     private String gender;
     private int age;
 
+    //Stats
+    private int happiness = 100;
+    private int health = 100;
+    private int intelligence = 100;
+    private double funds = 0.00;
+
+
     @OneToMany
     private List<Trait> traits;
 
     @OneToMany
     private List<Event> lifeEvents;
+
+    @OneToMany
+    private List<Person> familyMembers;
 
     //Default Constructor
     public Person() {}
@@ -68,5 +78,37 @@ public class Person {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public int getHappiness() {
+        return happiness;
+    }
+
+    public void setHappiness(int happiness) {
+        this.happiness = happiness;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
+    }
+
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
+    }
+
+    public double getFunds() {
+        return funds;
+    }
+
+    public void setFunds(double funds) {
+        this.funds = funds;
     }
 }
