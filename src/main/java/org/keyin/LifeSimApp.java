@@ -9,8 +9,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan("org.keyin")
 @EnableJpaRepositories("org.keyin")
 
-public class Main {
+public class LifeSimApp {
     public static void main(String[] args) {
-        SpringApplication.run(Main.class, args);
+        SpringApplication.run(LifeSimApp.class, args);
     }
 }
