@@ -11,9 +11,10 @@ public class Career {
     @Id
     private Long id;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private String careerTitle;
+    private String salary;
+    private String educationRequirements;
+    private String careerEffect; //ex. -10 health due to stress
 
     public Long getId() {
         return id;

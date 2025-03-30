@@ -1,9 +1,12 @@
 package org.keyin.Person;
 
+import org.keyin.Career.Career;
+import org.keyin.Education.Education;
 import org.keyin.Event.Event;
 import org.keyin.Trait.Trait;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,18 +23,28 @@ public class Person {
     //Stats
     private int happiness = 100;
     private int health = 100;
-    private int intelligence = 100;
+    private int intelligence;
+    private int appearance;
     private double funds = 0.00;
 
-
-    @OneToMany
-    private List<Trait> traits;
+    @ManyToMany
+    @JoinTable(
+            name = "person_traits",
+            joinColumns = @JoinColumn(name = "person_id"),
+            inverseJoinColumns = @JoinColumn(name = "trait_id")
+    )
+    private List<Trait> traits = new ArrayList<>();
 
     @OneToMany
     private List<Event> lifeEvents;
-
     @OneToMany
     private List<Person> familyMembers;
+
+    @ManyToMany
+    private List<Education> education;
+
+    @ManyToOne
+    private Career career;
 
     //Default Constructor
     public Person() {}
@@ -110,5 +123,13 @@ public class Person {
 
     public void setFunds(double funds) {
         this.funds = funds;
+    }
+
+    public int getAppearance() {
+        return appearance;
+    }
+
+    public void setAppearance(int appearance) {
+        this.appearance = appearance;
     }
 }

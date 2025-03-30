@@ -11,9 +11,11 @@ public class Education {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private String educationLevel; //ex. College, University
+    private String educationType; //ex. Chemistry, English, Trades, etc
+    private String educationRequirements;
+    private int educationLength;
+
 
     public Long getId() {
         return id;
