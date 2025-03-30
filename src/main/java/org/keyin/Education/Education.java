@@ -1,9 +1,8 @@
 package org.keyin.Education;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.keyin.Person.Person;
+
+import javax.persistence.*;
 
 @Entity
 public class Education {
@@ -16,6 +15,9 @@ public class Education {
     private String educationRequirements;
     private int educationLength;
 
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person person;
 
     public Long getId() {
         return id;

@@ -1,9 +1,10 @@
 package org.keyin.Event;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.keyin.Person.Person;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Event {
@@ -16,6 +17,9 @@ public class Event {
     private String eventDescription;
     private boolean requireUserResponse;
     private String eventEffect;
+
+    @ManyToMany(mappedBy = "lifeEvents")
+    private List<Person> persons = new ArrayList<>();
 
     //Default Constructor
     public Event() {}

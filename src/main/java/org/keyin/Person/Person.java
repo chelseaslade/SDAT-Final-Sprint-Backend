@@ -35,15 +35,22 @@ public class Person {
     )
     private List<Trait> traits = new ArrayList<>();
 
-    @OneToMany
-    private List<Event> lifeEvents;
+    @ManyToMany
+    @JoinTable(
+            name = "person_events",
+            joinColumns = @JoinColumn(name = "person_id"),
+            inverseJoinColumns = @JoinColumn(name = "event_id")
+    )
+    private List<Event> lifeEvents = new ArrayList<>();
+
     @OneToMany
     private List<Person> familyMembers;
 
-    @ManyToMany
-    private List<Education> education;
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+    private List<Education> educationHistory = new ArrayList<>();
 
     @ManyToOne
+    @JoinColumn(name = "career_id")
     private Career career;
 
     //Default Constructor
