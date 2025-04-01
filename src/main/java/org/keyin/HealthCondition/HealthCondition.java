@@ -1,9 +1,10 @@
 package org.keyin.HealthCondition;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.keyin.Person.Person;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class HealthCondition {
@@ -11,6 +12,17 @@ public class HealthCondition {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String conditionName;
+    private String conditionDescription;
+    private String conditionType; //ex. Chronic, temporary.
+    private int conditionEffect; //ex. -10 Health
+    private boolean isCurable;
+    private int duration; //in "game years"
+
+    @ManyToMany(mappedBy = "healthConditions")
+    private List<Person> affectedPersons = new ArrayList<>();
+
+    //Setters and Getters
     public Long getId() {
         return id;
     }

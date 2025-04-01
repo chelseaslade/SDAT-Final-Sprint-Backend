@@ -3,6 +3,7 @@ package org.keyin.Person;
 import org.keyin.Career.Career;
 import org.keyin.Education.Education;
 import org.keyin.Event.Event;
+import org.keyin.HealthCondition.HealthCondition;
 import org.keyin.Trait.Trait;
 
 import javax.persistence.*;
@@ -22,7 +23,7 @@ public class Person {
 
     //Stats
     private int happiness = 100;
-    private int health = 100;
+    private int health = 100; //At 0, Person dies (deletion)
     private int intelligence;
     private int appearance;
     private double funds = 0.00;
@@ -43,8 +44,13 @@ public class Person {
     )
     private List<Event> lifeEvents = new ArrayList<>();
 
-    @OneToMany
-    private List<Person> familyMembers;
+    @ManyToMany
+    @JoinTable(
+            name = "family_relationships",
+            joinColumns = @JoinColumn(name = "person_id"),
+            inverseJoinColumns = @JoinColumn(name = "related_person_id")
+    )
+    private List<Person> familyMembers = new ArrayList<>();
 
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     private List<Education> educationHistory = new ArrayList<>();
@@ -52,6 +58,14 @@ public class Person {
     @ManyToOne
     @JoinColumn(name = "career_id")
     private Career career;
+
+    @ManyToMany
+    @JoinTable(
+            name = "person_healthconditions",
+            joinColumns = @JoinColumn(name = "person_id"),
+            inverseJoinColumns = @JoinColumn(name = "healthcondition_id")
+    )
+    private List<HealthCondition> healthConditions = new ArrayList<>();
 
     //Default Constructor
     public Person() {}
