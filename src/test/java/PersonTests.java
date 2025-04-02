@@ -6,9 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -84,4 +82,16 @@ public class PersonTests {
         verify(personRepository, times(1)).save(testPerson);
 
     }
+
+    @Test
+    void unableToRetrievePerson() {
+        when(personRepository.findById(2L)).thenReturn(Optional.empty());
+
+        Person testResult = personService.getPersonByID(2L);
+
+        assertNull(testResult);
+        verify(personRepository, times(1)).findById(2L);
+    }
+
+
 }
