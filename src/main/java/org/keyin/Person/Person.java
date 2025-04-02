@@ -1,9 +1,13 @@
 package org.keyin.Person;
 
+import org.keyin.Career.Career;
+import org.keyin.Education.Education;
 import org.keyin.Event.Event;
+import org.keyin.HealthCondition.HealthCondition;
 import org.keyin.Trait.Trait;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,19 +23,49 @@ public class Person {
 
     //Stats
     private int happiness = 100;
-    private int health = 100;
-    private int intelligence = 100;
+    private int health = 100; //At 0, Person dies (deletion)
+    private int intelligence;
+    private int appearance;
     private double funds = 0.00;
 
+    @ManyToMany
+    @JoinTable(
+            name = "person_traits",
+            joinColumns = @JoinColumn(name = "person_id"),
+            inverseJoinColumns = @JoinColumn(name = "trait_id")
+    )
+    private List<Trait> traits = new ArrayList<>();
 
-    @OneToMany
-    private List<Trait> traits;
+    @ManyToMany
+    @JoinTable(
+            name = "person_events",
+            joinColumns = @JoinColumn(name = "person_id"),
+            inverseJoinColumns = @JoinColumn(name = "event_id")
+    )
+    private List<Event> lifeEvents = new ArrayList<>();
 
-    @OneToMany
-    private List<Event> lifeEvents;
+    @ManyToMany
+    @JoinTable(
+            name = "family_relationships",
+            joinColumns = @JoinColumn(name = "person_id"),
+            inverseJoinColumns = @JoinColumn(name = "related_person_id")
+    )
+    private List<Person> familyMembers = new ArrayList<>();
 
-    @OneToMany
-    private List<Person> familyMembers;
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+    private List<Education> educationHistory = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "career_id")
+    private Career career;
+
+    @ManyToMany
+    @JoinTable(
+            name = "person_healthconditions",
+            joinColumns = @JoinColumn(name = "person_id"),
+            inverseJoinColumns = @JoinColumn(name = "healthcondition_id")
+    )
+    private List<HealthCondition> healthConditions = new ArrayList<>();
 
     //Default Constructor
     public Person() {}
@@ -44,6 +78,10 @@ public class Person {
     }
 
     //Setters and Getters
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }
@@ -110,5 +148,13 @@ public class Person {
 
     public void setFunds(double funds) {
         this.funds = funds;
+    }
+
+    public int getAppearance() {
+        return appearance;
+    }
+
+    public void setAppearance(int appearance) {
+        this.appearance = appearance;
     }
 }

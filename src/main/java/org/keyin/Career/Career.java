@@ -1,9 +1,10 @@
 package org.keyin.Career;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.keyin.Person.Person;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Career {
@@ -11,11 +12,42 @@ public class Career {
     @Id
     private Long id;
 
+    private String careerTitle;
+    private String salary;
+    private String educationRequirements;
+
+    @OneToMany(mappedBy = "career")
+    private List<Person> employees = new ArrayList<>();
+
+    public Long getId() {
+        return id;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
 
-    public Long getId() {
-        return id;
+    public String getCareerTitle() {
+        return careerTitle;
+    }
+
+    public void setCareerTitle(String careerTitle) {
+        this.careerTitle = careerTitle;
+    }
+
+    public String getSalary() {
+        return salary;
+    }
+
+    public void setSalary(String salary) {
+        this.salary = salary;
+    }
+
+    public String getEducationRequirements() {
+        return educationRequirements;
+    }
+
+    public void setEducationRequirements(String educationRequirements) {
+        this.educationRequirements = educationRequirements;
     }
 }

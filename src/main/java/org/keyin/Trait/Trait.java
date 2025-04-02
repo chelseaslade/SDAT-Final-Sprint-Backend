@@ -1,9 +1,10 @@
 package org.keyin.Trait;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.keyin.Person.Person;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Trait {
@@ -13,22 +14,24 @@ public class Trait {
 
     private String traitName;
     private String traitDescription;
-    private String traitType;
-    private String traitEffect;
+    private String traitType; // Health, Intelligence, Appearance
+    private int traitEffectNum; //If applicable, else null
+
+    @ManyToMany(mappedBy = "traits")
+    private List<Person> people = new ArrayList<>();
 
     //Default Constructor
     public Trait() {
     }
 
-    public Trait(String traitName, String traitDescription, String traitType, String traitEffect) {
+    public Trait(String traitName, String traitDescription, String traitType, int traitEffectNum) {
         this.traitName = traitName;
         this.traitDescription = traitDescription;
         this.traitType = traitType;
-        this.traitEffect = traitEffect;
+        this.traitEffectNum = traitEffectNum;
     }
 
     //Setters and Getters
-
     public Long getId() {
         return id;
     }
@@ -57,11 +60,11 @@ public class Trait {
         this.traitType = traitType;
     }
 
-    public String getTraitEffect() {
-        return traitEffect;
+    public int getTraitEffectNum() {
+        return traitEffectNum;
     }
 
-    public void setTraitEffect(String traitEffect) {
-        this.traitEffect = traitEffect;
+    public void setTraitEffectNum(int traitEffectNum) {
+        this.traitEffectNum = traitEffectNum;
     }
 }
