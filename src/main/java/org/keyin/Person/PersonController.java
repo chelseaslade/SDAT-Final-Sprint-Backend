@@ -16,7 +16,12 @@ public class PersonController {
 
     @GetMapping
     public List<Person> getAllPersons() {
-        return personRepository.findAll();
+        return personService.getAllPersons();
+    }
+
+    @GetMapping("/{id}")
+    public Person getPersonById(@PathVariable Long id) {
+        return personService.getPersonByID(id);
     }
 
     @PostMapping

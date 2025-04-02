@@ -35,6 +35,7 @@ public class PersonService {
             person.setAppearance(updatedPerson.getAppearance());
             person.setHappiness(updatedPerson.getHappiness());
             person.setIntelligence(updatedPerson.getIntelligence());
+            person.setHealth(updatedPerson.getHealth());
             return personRepository.save(person);
         }
         throw new RuntimeException("Person not found");
@@ -42,6 +43,10 @@ public class PersonService {
 
     public List<Person> getAllPersons() {
         return personRepository.findAll();
+    }
+
+    public Person getPersonByID(Long id) {
+        return personRepository.findById(id).orElse(null);
     }
 
     public void deleteMainCharacter(Long personId) {
@@ -55,9 +60,20 @@ public class PersonService {
         return personRepository.save(person);
     }
 
+    //Modify single stat
     @Modifying
     @Query("UPDATE Person p SET p.happiness = :happiness WHERE p.id = :id")
     void updateHappiness(@Param("id") Long id, @Param("happiness") int happiness) {
+    }
+
+    @Modifying
+    @Query("UPDATE Person p SET p.intelligence = :intelligence WHERE p.id = :id")
+    void updateIntelligence(@Param("id") Long id, @Param("intelligence") int intelligence) {
+    }
+
+    @Modifying
+    @Query("UPDATE Person p SET p.health = :health WHERE p.id = :id")
+    void updateHealth(@Param("id") Long id, @Param("health") int health) {
     }
 
 }
