@@ -14,8 +14,8 @@ public class Trait {
 
     private String traitName;
     private String traitDescription;
-    private String traitType;
-    private String traitEffect;
+    private String traitType; // Health, Intelligence, Appearance
+    private int traitEffectNum; //If applicable, else null
 
     @ManyToMany(mappedBy = "traits")
     private List<Person> people = new ArrayList<>();
@@ -24,11 +24,11 @@ public class Trait {
     public Trait() {
     }
 
-    public Trait(String traitName, String traitDescription, String traitType, String traitEffect) {
+    public Trait(String traitName, String traitDescription, String traitType, int traitEffectNum) {
         this.traitName = traitName;
         this.traitDescription = traitDescription;
         this.traitType = traitType;
-        this.traitEffect = traitEffect;
+        this.traitEffectNum = traitEffectNum;
     }
 
     //Setters and Getters
@@ -60,11 +60,11 @@ public class Trait {
         this.traitType = traitType;
     }
 
-    public String getTraitEffect() {
-        return traitEffect;
+    public int getTraitEffectNum() {
+        return traitEffectNum;
     }
 
-    public void setTraitEffect(String traitEffect) {
-        this.traitEffect = traitEffect;
+    public void setTraitEffectNum(int traitEffectNum) {
+        this.traitEffectNum = traitEffectNum;
     }
 }

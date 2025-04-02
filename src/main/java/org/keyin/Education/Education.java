@@ -12,8 +12,8 @@ public class Education {
 
     private String educationLevel; //ex. College, University
     private String educationType; //ex. Chemistry, English, Trades, etc
-    private String educationRequirements;
-    private int educationLength;
+    private String educationRequirements; //Highest required (ex, high school, elementary, none)
+    private double educationLength;
 
     @ManyToOne
     @JoinColumn(name = "person_id")
@@ -21,5 +21,41 @@ public class Education {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEducationLevel() {
+        return educationLevel;
+    }
+
+    public void setEducationLevel(String educationLevel) {
+        this.educationLevel = educationLevel;
+    }
+
+    public String getEducationType() {
+        return educationType;
+    }
+
+    public void setEducationType(String educationType) {
+        this.educationType = educationType;
+    }
+
+    public String getEducationRequirements() {
+        return educationRequirements;
+    }
+
+    public void setEducationRequirements(String educationRequirements) {
+        this.educationRequirements = educationRequirements;
+    }
+
+    public double getEducationLength() {
+        return educationLength;
+    }
+
+    public void setEducationLength(double educationLength) {
+        this.educationLength = educationLength;
     }
 }

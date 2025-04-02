@@ -15,12 +15,39 @@ public class Career {
     private String careerTitle;
     private String salary;
     private String educationRequirements;
-    private String careerEffect; //ex. -10 health due to stress
 
     @OneToMany(mappedBy = "career")
     private List<Person> employees = new ArrayList<>();
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCareerTitle() {
+        return careerTitle;
+    }
+
+    public void setCareerTitle(String careerTitle) {
+        this.careerTitle = careerTitle;
+    }
+
+    public String getSalary() {
+        return salary;
+    }
+
+    public void setSalary(String salary) {
+        this.salary = salary;
+    }
+
+    public String getEducationRequirements() {
+        return educationRequirements;
+    }
+
+    public void setEducationRequirements(String educationRequirements) {
+        this.educationRequirements = educationRequirements;
     }
 }

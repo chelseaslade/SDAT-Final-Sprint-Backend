@@ -16,7 +16,8 @@ public class Event {
     private String eventType;
     private String eventDescription;
     private boolean requireUserResponse;
-    private String eventEffect;
+    private String eventStatEffect; //Happiness, Intelligence, Money
+    private int eventEffectNum; // +10, -10, etc
     private double eventFrequency;
 
     @ManyToMany(mappedBy = "lifeEvents")
@@ -25,12 +26,13 @@ public class Event {
     //Default Constructor
     public Event() {}
 
-    public Event(String eventName, String eventType, String eventDescription, boolean requireUserResponse, String eventEffect, double eventFrequency) {
+    public Event(String eventName, String eventType, String eventDescription, boolean requireUserResponse, String eventStatEffect, int eventEffectNum, double eventFrequency) {
         this.eventName = eventName;
         this.eventType = eventType;
         this.eventDescription = eventDescription;
         this.requireUserResponse = requireUserResponse;
-        this.eventEffect = eventEffect;
+        this.eventStatEffect = eventStatEffect;
+        this.eventEffectNum = eventEffectNum;
         this.eventFrequency = eventFrequency;
     }
 
@@ -75,12 +77,20 @@ public class Event {
         return requireUserResponse;
     }
 
-    public void setEventEffect(String eventEffect) {
-        this.eventEffect = eventEffect;
+    public void setEventStatEffect(String eventEffect) {
+        this.eventStatEffect = eventEffect;
     }
 
-    public String getEventEffect() {
-        return eventEffect;
+    public String getEventStatEffect() {
+        return eventStatEffect;
+    }
+
+    public void setEventEffectNum(int eventEffectNum) {
+        this.eventEffectNum = eventEffectNum;
+    }
+
+    public int getEventEffectNum() {
+        return eventEffectNum;
     }
 
     public void setEventFrequency(double eventFrequency) {
