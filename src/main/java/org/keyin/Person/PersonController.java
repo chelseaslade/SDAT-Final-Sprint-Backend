@@ -38,4 +38,9 @@ public class PersonController {
     public Person updatePerson(@RequestBody Person person) {
         return personRepository.save(person);
     }
+
+    @PutMapping("/ageup/{id}")
+    public Person ageUp(@PathVariable Long id) {
+        return personService.ageUp(id);
+    }
 }
