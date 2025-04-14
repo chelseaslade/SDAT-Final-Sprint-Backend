@@ -34,6 +34,11 @@ public class PersonController {
         personRepository.delete(person);
     }
 
+    @DeleteMapping("/delete/{id}")
+    public void deleteMainCharacter(@PathVariable Long id) {
+        personService.deleteMainCharacter(id);
+    }
+
     @PutMapping
     public Person updatePerson(@RequestBody Person person) {
         return personRepository.save(person);
