@@ -75,7 +75,7 @@ public class PersonTests {
         when(personRepository.findById(1L)).thenReturn(Optional.of(testPerson));
 
         Person testResult = personService.getPersonByID(1L);
-        personService.ageUp(testResult);
+        personService.ageUp(testResult.getId());
 
         assertNotNull(testResult);
         assertEquals(21, testResult.getAge());

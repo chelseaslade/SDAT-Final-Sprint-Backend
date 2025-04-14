@@ -12,6 +12,7 @@ import java.util.List;
 
 @Entity
 public class Person {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,8 +25,8 @@ public class Person {
     //Stats
     private int happiness = 100;
     private int health = 100; //At 0, Person dies (deletion)
-    private int intelligence;
-    private int appearance;
+    private int intelligence = (int)(Math.random() * 101);
+    private int appearance = (int)(Math.random() * 101);
     private double funds = 0.00;
 
     @ManyToMany

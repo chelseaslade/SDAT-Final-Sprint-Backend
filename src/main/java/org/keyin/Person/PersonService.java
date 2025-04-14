@@ -54,11 +54,13 @@ public class PersonService {
         person.ifPresent(personRepository::delete);
     }
 
-    public Person ageUp(Person person) {
+    public Person ageUp(Long id) {
+        Person person = personRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Person not found"));
         person.setAge(person.getAge() + 1);
-
         return personRepository.save(person);
     }
+
 
     //Modify single stat
     @Modifying
