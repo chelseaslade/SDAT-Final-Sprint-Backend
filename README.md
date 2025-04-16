@@ -1,5 +1,5 @@
 # SIMple Life - Backend (SDAT Final Sprint)
-A backend meant to pair with SIMple life. 
+A backend meant to pair with SIMple life. (https://github.com/chelseaslade/simple-life)
 
 ## PROGRAM DETAILS
 ### FEATURES & TECHNOLOGY
