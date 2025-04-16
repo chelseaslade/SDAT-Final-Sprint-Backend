@@ -10,35 +10,7 @@ A backend meant to pair with SIMple life. (https://github.com/chelseaslade/simpl
     - Spring Data JPA
     - Docker
   
-### FILE STRUCTURE
-```
-- screenshots
-- src
-  - main
-    - java
-      - org.keyin
-          - member
-              Member
-              MemberController
-              MemberRepository
-              MemberService
-          - tournament
-              Tournament
-              TournamentController
-              TournamentRepository
-              TournamentService
-        GolfMembershipApp
-        HomeController
-      - resources
-          application.properties
-    -test
-      - Java
-- target
-.gitignore
-docker-compose.yml
-Dockerfile
-pom.xml
-```
+
 ## HOW TO RUN
 ### REQUIRED TECHNOLOGY
 * Docker Desktop (Open prior following below instructions)
