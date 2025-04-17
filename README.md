@@ -15,7 +15,6 @@ Currently set up to interact with the Person class to run CRUD operations such a
 ## HOW TO RUN
 ### REQUIRED TECHNOLOGY
 * Docker Desktop (Open prior following below instructions)
-* Postman (if testing endpoints)
 * Java w/ Maven installed
 * MySQL (edit password and user in applications.properties to match your credentials)
 
