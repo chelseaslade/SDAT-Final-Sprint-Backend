@@ -44,6 +44,11 @@ public class PersonController {
         return personRepository.save(person);
     }
 
+    @PutMapping("/update/{id}")
+    public Person updatePersonByID(@PathVariable Long id) {
+        return personService.updatePersonByID(id);
+    }
+
     @PutMapping("/ageup/{id}")
     public Person ageUp(@PathVariable Long id) {
         return personService.ageUp(id);
