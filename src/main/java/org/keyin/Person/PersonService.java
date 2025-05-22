@@ -61,6 +61,24 @@ public class PersonService {
         return personRepository.save(person);
     }
 
+    public Person updatePersonByID(Long id) {
+        Optional<Person> updatedPerson = personRepository.findById(id);
+        if (updatedPerson.isPresent()) {
+            Person person = updatedPerson.get();
+            person.setFirstName(updatedPerson.get().getFirstName());
+            person.setSurname(updatedPerson.get().getSurname());
+            person.setAge(updatedPerson.get().getAge());
+            person.setGender(updatedPerson.get().getGender());
+            person.setFunds(updatedPerson.get().getFunds());
+            person.setAppearance(updatedPerson.get().getAppearance());
+            person.setHappiness(updatedPerson.get().getHappiness());
+            person.setIntelligence(updatedPerson.get().getIntelligence());
+            person.setHealth(updatedPerson.get().getHealth());
+            return personRepository.save(person);
+        }
+        throw new RuntimeException("Person not found");
+    }
+
 
     //Modify single stat
     @Modifying
